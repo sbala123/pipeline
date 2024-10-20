@@ -26,5 +26,17 @@ pipeline {
       }
     }
 
+    stage('CI : Container run') {
+      steps {
+        sh 'sudo docker container run -i -t --rm sloopstash/mongo-db:v4.4.4 /bin/bash'
+      }
+    }
+
+    stage('confirmation') {
+      steps {
+        input 'Container up brought up, happy ?!'
+      }
+    }
+
   }
 }
